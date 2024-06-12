@@ -1,7 +1,7 @@
 <template>
   <div>
      <div class="login-logo">
-    <a href="../../index2.html"><b>Sage</b>Killer</a>
+    <a href="#"><b>Sage</b>Killer</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
