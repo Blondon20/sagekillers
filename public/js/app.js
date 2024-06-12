@@ -5109,9 +5109,97 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("h1", [_vm._v("Page de connexion")]);
+  return _c("div", [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "card"
+  }, [_c("div", {
+    staticClass: "card-body login-card-body"
+  }, [_c("p", {
+    staticClass: "login-box-msg"
+  }, [_vm._v("Ouverture d'un nouveau fichier")]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("p", {
+    staticClass: "mb-1"
+  }, [_c("router-link", {
+    attrs: {
+      to: "/forgot"
+    }
+  }, [_vm._v("Mot de passe oublier ?")])], 1), _vm._v(" "), _c("p", {
+    staticClass: "mb-0"
+  }, [_c("router-link", {
+    staticClass: "text-center",
+    attrs: {
+      to: "/register"
+    }
+  }, [_vm._v("S'inscrire ici !")])], 1)])])]);
 };
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "login-logo"
+  }, [_c("a", {
+    attrs: {
+      href: "../../index2.html"
+    }
+  }, [_c("b", [_vm._v("Sage")]), _vm._v("Killer")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("form", {
+    attrs: {
+      action: "../../index3.html",
+      method: "post"
+    }
+  }, [_c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "email",
+      placeholder: "Nom d'utilisateur"
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "input-group-append"
+  }, [_c("div", {
+    staticClass: "input-group-text"
+  }, [_c("span", {
+    staticClass: "fas fa-envelope"
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "password",
+      placeholder: "Mot de passe"
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "input-group-append"
+  }, [_c("div", {
+    staticClass: "input-group-text"
+  }, [_c("span", {
+    staticClass: "fas fa-lock"
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-8"
+  }, [_c("div", {
+    staticClass: "icheck-primary"
+  }, [_c("input", {
+    attrs: {
+      type: "checkbox",
+      id: "remember"
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": "remember"
+    }
+  }, [_vm._v("\n              Afficher mot de passe\n            ")])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-4"
+  }, [_c("button", {
+    staticClass: "btn btn-primary btn-block",
+    attrs: {
+      type: "submit"
+    }
+  }, [_vm._v("Connexion")])])])]);
+}];
 render._withStripped = true;
 
 
@@ -5132,9 +5220,135 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("h1", [_vm._v("Page d'enregistrement")]);
+  return _vm._m(0);
 };
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", [_c("div", {
+    staticClass: "register-logo"
+  }, [_c("a", {
+    attrs: {
+      href: "../../index2.html"
+    }
+  }, [_c("b", [_vm._v("Admin")]), _vm._v("LTE")])]), _vm._v(" "), _c("div", {
+    staticClass: "card"
+  }, [_c("div", {
+    staticClass: "card-body register-card-body"
+  }, [_c("p", {
+    staticClass: "login-box-msg"
+  }, [_vm._v("Register a new membership")]), _vm._v(" "), _c("form", {
+    attrs: {
+      action: "../../index.html",
+      method: "post"
+    }
+  }, [_c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      placeholder: "Full name"
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "input-group-append"
+  }, [_c("div", {
+    staticClass: "input-group-text"
+  }, [_c("span", {
+    staticClass: "fas fa-user"
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "email",
+      placeholder: "Email"
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "input-group-append"
+  }, [_c("div", {
+    staticClass: "input-group-text"
+  }, [_c("span", {
+    staticClass: "fas fa-envelope"
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "password",
+      placeholder: "Password"
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "input-group-append"
+  }, [_c("div", {
+    staticClass: "input-group-text"
+  }, [_c("span", {
+    staticClass: "fas fa-lock"
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "input-group mb-3"
+  }, [_c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "password",
+      placeholder: "Retype password"
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "input-group-append"
+  }, [_c("div", {
+    staticClass: "input-group-text"
+  }, [_c("span", {
+    staticClass: "fas fa-lock"
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-8"
+  }, [_c("div", {
+    staticClass: "icheck-primary"
+  }, [_c("input", {
+    attrs: {
+      type: "checkbox",
+      id: "agreeTerms",
+      name: "terms",
+      value: "agree"
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": "agreeTerms"
+    }
+  }, [_vm._v("\n             I agree to the "), _c("a", {
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("terms")])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-4"
+  }, [_c("button", {
+    staticClass: "btn btn-primary btn-block",
+    attrs: {
+      type: "submit"
+    }
+  }, [_vm._v("Register")])])])]), _vm._v(" "), _c("div", {
+    staticClass: "social-auth-links text-center"
+  }, [_c("p", [_vm._v("- OR -")]), _vm._v(" "), _c("a", {
+    staticClass: "btn btn-block btn-primary",
+    attrs: {
+      href: "#"
+    }
+  }, [_c("i", {
+    staticClass: "fab fa-facebook mr-2"
+  }), _vm._v("\n        Sign up using Facebook\n      ")]), _vm._v(" "), _c("a", {
+    staticClass: "btn btn-block btn-danger",
+    attrs: {
+      href: "#"
+    }
+  }, [_c("i", {
+    staticClass: "fab fa-google-plus mr-2"
+  }), _vm._v("\n        Sign up using Google+\n      ")])]), _vm._v(" "), _c("a", {
+    staticClass: "text-center",
+    attrs: {
+      href: "login.html"
+    }
+  }, [_vm._v("I already have a membership")])])])]);
+}];
 render._withStripped = true;
 
 
