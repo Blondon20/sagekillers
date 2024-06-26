@@ -8,9 +8,9 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Ouverture d'un nouveau fichier</p>
 
-      <form action="../../index3.html" method="post">
+      <form class="user" @submit.prevent="login">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Nom d'utilisateur">
+          <input type="email" class="form-control" placeholder="Nom d'utilisateur" v-model="form.email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -18,7 +18,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Mot de passe">
+          <input type="password" class="form-control" placeholder="Mot de passe" v-model="form.password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -56,7 +56,22 @@
 
 <script type="text/javascript">
 export default {
-  
+  data() {
+    return {
+      form: {
+        email: null,
+        password: null
+      }
+    }
+  },
+
+  methods: {
+    login(){
+      axios.post('/api/auth/login', this.form) 
+      .then(res => User.responseAfterLogin(res))
+      .catch(error => console.log(error.response.data))
+    }
+  },
 }
 </script>
 
