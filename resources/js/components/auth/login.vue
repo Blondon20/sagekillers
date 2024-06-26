@@ -55,7 +55,14 @@
 </template>
 
 <script type="text/javascript">
-export default {
+export default { 
+  created(){
+    // Si l'user est déjà connecter, impossible de retourner au login
+    if(User.loggedIn()){
+      this.$router.push({name:'home'});
+    }
+  },
+
   data() {
     return {
       form: {
@@ -68,7 +75,11 @@ export default {
   methods: {
     login(){
       axios.post('/api/auth/login', this.form) 
-      .then(res => User.responseAfterLogin(res))
+      .then(res => {
+        User.responseAfterLogin(res)
+        //Ouverture page d'accueil après authentification     
+        this.$router.push({name: 'home'})
+      })
       .catch(error => console.log(error.response.data))
     }
   },
