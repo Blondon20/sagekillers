@@ -2,47 +2,42 @@
 import Token from "./Token";
 import AppStorage from "./AppStorage";
 
-
-class User{
-
-  responseAfterLogin(res){
+class User {
+  responseAfterLogin(res) {
     const access_token = res.data.access_token;
     const username = res.data.name;
 
-    if(Token.estValide(access_token)){
+    if (Token.estValide(access_token)) {
       AppStorage.store(access_token, username);
     }
   }
 
-
-  hasToken(){
-    const storeToken = localStorage.getItem(token);
-    if(storeToken){
-      return Token.estValide(storeToken)? true: false;
+  hasToken() {
+    const storeToken = localStorage.getItem('token'); 
+    if (storeToken) {
+      return Token.estValide(storeToken) ? true : false;
     }
-    false
+    return false; 
   }
 
-  loggedIn(){
+  loggedIn() {
     return this.hasToken();
   }
 
-  name(){
-    if(this.loggedIn()){
+  name() {
+    if (this.loggedIn()) {
       return localStorage.getItem('user');
     }
   }
 
-  id(){
-    if(this.loggedIn()){
+  id() {
+    if (this.loggedIn()) {
       const payload = Token.payload(localStorage.getItem('token'));
-      
       return payload.sub;
     }
     return false;
   }
-
-
 }
+
 
 export default User = new User();

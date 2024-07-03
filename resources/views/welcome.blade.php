@@ -163,7 +163,7 @@
     <a href="index3.html" class="brand-link">
       <img src="{{ asset('backend/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Sage Killer V1.0</span>
     </a>
 
     <!-- Sidebar -->
@@ -174,7 +174,7 @@
           <img src="{{ asset('backend/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <router-link to="/logout" href="#" class="d-block">Se deconnecter</router-link>
         </div>
       </div>
 
@@ -761,8 +761,15 @@
 <!-- jQuery UI 1.11.4 -->
 <script src="{{ asset('backend/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
+<script type="text/javascript">
+  $.widget.bridge('uibutton', $.ui.button);
+
+  // Tester et activer la navigation si l'utilisateur est connecter
+  /* let token = localStorage.getItem('token');
+  if(token){
+     $("#sidebar").css("display","");
+     $("#topbar").css("display",""); */
+  }
 </script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
