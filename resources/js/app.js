@@ -15,6 +15,10 @@ import {routes} from './routes';
 import User from './Helpers/User';
 window.User = User;
 
+// Importation de la class Notification
+import Notification from './Helpers/Notification';
+window.Notification = Notification;
+
 // Importation de SweetAlert2
 import Swal from 'sweetalert2';
 window.Swal = Swal;

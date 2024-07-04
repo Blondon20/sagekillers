@@ -6,6 +6,10 @@ let logout = require('./components/auth/logout.vue').default;
 // Page d'accueil
 let home = require('./components/home.vue').default;
 
+// Gerer les employees
+let creeremployee = require('./components/employee/create.vue').default;
+let listeemployee = require('./components/employee/liste.vue').default;
+
 
 
 export const routes = [
@@ -14,5 +18,9 @@ export const routes = [
   { path: '/forgot', component: forgot, name: 'forgot'},
   { path: '/logout', component: logout, name: 'logout'},
   
-  { path: '/home', component: home, name: 'home'}
+  { path: '/home', component: home, name: 'home'},
+
+  // Route employee
+  { path: '/creer-employee', component: creeremployee, name: 'creer-employee'},
+  { path: '/liste-employee', component: listeemployee, name: 'liste-employee'}
 ]
