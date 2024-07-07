@@ -26,7 +26,7 @@
 
         <div class="card card-default">
             <div class="card-header">
-                <h4 class="card-title">Nouveau employee :</h4>
+                <h4 class="card-title">Modification de l'employee :</h4>
 
                 <div class="card-tools">
                     <button
@@ -41,7 +41,7 @@
 
             <form
                 class="employee"
-                @submit.prevent="enregistreremployee"
+                @submit.prevent="modifieremployee"
                 enctype="multipart/form-data"
             >
                 <!-- /.card-header -->
@@ -281,6 +281,7 @@ export default {
                 adresse: "",
                 date_naissance: "",
                 photo: "",
+                newphoto: "",
                 telephone1: "",
                 telephone2: "",
                 salaire: "",
@@ -288,6 +289,14 @@ export default {
 
             errors: {},
         };
+    },
+
+    created(){
+      //Recuperer l'id
+      let id = this.$route.params.id;
+      axios.get(`/api/employee/${id}`)
+      .then(({data}) => (this.form = data))
+      .catch(console.log('error'))
     },
 
     methods: {
@@ -299,15 +308,15 @@ export default {
             } else {
                 let reader = new FileReader();
                 reader.onload = (event) => {
-                    this.form.photo = event.target.result;
-                    console.log(this.form.photo);
+                    this.form.newphoto = event.target.result;
                 };
                 reader.readAsDataURL(file);
             }
         },
-        enregistreremployee() {
+        modifieremployee() {
+          let id = this.$route.params.id;
             axios
-                .post("/api/employee", this.form)
+                .patch(`/api/employee/${id}`, this.form)
                 .then(() => {
                     this.$router.push({ name: "liste-employee" });
                     Notification.Succes();

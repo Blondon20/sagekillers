@@ -5,7 +5,7 @@ class Notification {
           type: 'success',
           layout: 'topRight',
           text: 'Enregistrer avec succes !',
-          timeout: 1000,
+          timeout: 2000,
         }).show();
       }
 
@@ -33,6 +33,15 @@ class Notification {
           layout: 'topRight',
           text: 'Oopps echouer !',
           timeout: 1000,
+        }).show();
+      }
+
+      image_validation(){
+        new Noty({
+          type: 'error',
+          layout: 'topRight',
+          text: 'Image rejétée, télécharger une image inférieur à 1MB !',
+          timeout: 2000,
         }).show();
       }
 

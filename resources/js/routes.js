@@ -9,6 +9,7 @@ let home = require('./components/home.vue').default;
 // Gerer les employees
 let creeremployee = require('./components/employee/create.vue').default;
 let listeemployee = require('./components/employee/liste.vue').default;
+let editemployee = require('./components/employee/edit.vue').default;
 
 
 
@@ -22,5 +23,6 @@ export const routes = [
 
   // Route employee
   { path: '/creer-employee', component: creeremployee, name: 'creer-employee'},
-  { path: '/liste-employee', component: listeemployee, name: 'liste-employee'}
+  { path: '/liste-employee', component: listeemployee, name: 'liste-employee'},
+  { path: '/edit-employee/:id', component: editemployee, name: 'edit-employee'}
 ]

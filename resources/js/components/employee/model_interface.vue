@@ -39,11 +39,7 @@
                 </div>
             </div>
 
-            <form
-                class="employee"
-                @submit.prevent="enregistreremployee"
-                enctype="multipart/form-data"
-            >
+            <form class="employee" @submit.prevent="enregistreremployee()" enctype="multipart/form-data">
                 <!-- /.card-header -->
                 <div class="card-body">
                     <div class="row">
@@ -56,11 +52,7 @@
                                     placeholder="Entrez le nom complet"
                                     v-model="form.nom_complet"
                                 />
-                                <small
-                                    class="text-danger"
-                                    v-if="errors.nom_complet"
-                                    >{{ errors.nom_complet[0] }}</small
-                                >
+                                <small class="text-danger" v-if="errors.nom_complet">{{ errors.nom_complet[0] }}</small>
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group">
@@ -71,11 +63,7 @@
                                     placeholder="Entrez le numéro CNI"
                                     v-model="form.num_cni"
                                 />
-                                <small
-                                    class="text-danger"
-                                    v-if="errors.num_cni"
-                                    >{{ errors.num_cni[0] }}</small
-                                >
+                                <small class="text-danger" v-if="errors.num_cni">{{ errors.num_cni[0] }}</small>
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group">
@@ -87,11 +75,7 @@
                                     class="form-control"
                                     v-model="form.date_naissance"
                                 />
-                                <small
-                                    class="text-danger"
-                                    v-if="errors.date_naissance"
-                                    >{{ errors.date_naissance[0] }}</small
-                                >
+                                <small class="text-danger" v-if="errors.date_naissance">{{ errors.date_naissance[0] }}</small>
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group">
@@ -102,11 +86,7 @@
                                     placeholder="Entrez le téléphone 1"
                                     v-model="form.telephone1"
                                 />
-                                <small
-                                    class="text-danger"
-                                    v-if="errors.telephone1"
-                                    >{{ errors.telephone1[0] }}</small
-                                >
+                                <small class="text-danger" v-if="errors.telephone1">{{ errors.telephone1[0] }}</small>
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group">
@@ -117,11 +97,7 @@
                                     placeholder="Entrez le téléphone 2"
                                     v-model="form.telephone2"
                                 />
-                                <small
-                                    class="text-danger"
-                                    v-if="errors.telephone2"
-                                    >{{ errors.telephone2[0] }}</small
-                                >
+                                <small class="text-danger" v-if="errors.telephone2">{{ errors.telephone2[0] }}</small>
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group">
@@ -132,11 +108,7 @@
                                     placeholder="Entrez le salaire de base"
                                     v-model="form.salaire"
                                 />
-                                <small
-                                    class="text-danger"
-                                    v-if="errors.salaire"
-                                    >{{ errors.salaire[0] }}</small
-                                >
+                                <small class="text-danger" v-if="errors.salaire">{{ errors.salaire[0] }}</small>
                             </div>
                             <!-- /.form-group -->
                         </div>
@@ -150,11 +122,7 @@
                                     placeholder="Entrez l'adresse email"
                                     v-model="form.email"
                                 />
-                                <small
-                                    class="text-danger"
-                                    v-if="errors.email"
-                                    >{{ errors.email[0] }}</small
-                                >
+                                <small class="text-danger" v-if="errors.email">{{ errors.email[0] }}</small>
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group">
@@ -165,31 +133,19 @@
                                     placeholder="Entrez l'adresse"
                                     v-model="form.adresse"
                                 />
-                                <small
-                                    class="text-danger"
-                                    v-if="errors.adresse"
-                                    >{{ errors.adresse[0] }}</small
-                                >
+                                <small class="text-danger" v-if="errors.adresse">{{ errors.adresse[0] }}</small>
+
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group">
                                 <label for="photo">Photo employé</label>
                                 <div class="input-group">
-                                    <input
-                                        type="file"
-                                        class="form-control"
-                                        id="image"
-                                        @change="onFileChange"
-                                    />
-                                    <small
-                                        class="text-danger"
-                                        v-if="errors.photo"
-                                        >{{ errors.photo[0] }}</small
-                                    >
+                                    <input type="file" class="form-control" />
+                                    <small class="text-danger" v-if="errors.photo">{{ errors.photo[0] }}</small>
                                     <div class="input-group-append">
                                         <img
                                             id="photo_preview"
-                                            :src="form.photo"
+                                            src="form.photo"
                                             style="
                                                 display: block;
                                                 width: 40px;
@@ -275,15 +231,15 @@ export default {
     data() {
         return {
             form: {
-                nom_complet: "",
-                email: "",
-                num_cni: "",
-                adresse: "",
-                date_naissance: "",
-                photo: "",
-                telephone1: "",
-                telephone2: "",
-                salaire: "",
+                nom_complet: '',
+                email: '',
+                num_cni: '',
+                adresse: '', 
+                date_naissance: '',
+                photo: '', 
+                telephone1: '',
+                telephone2: '', 
+                salaire: ''         
             },
 
             errors: {},
@@ -291,29 +247,9 @@ export default {
     },
 
     methods: {
-        onFileChange(event) {
-            let file = event.target.files[0];
+      enregistreremployee(){
 
-            if (file.size > 1048770) {
-                Notification.image_validation();
-            } else {
-                let reader = new FileReader();
-                reader.onload = (event) => {
-                    this.form.photo = event.target.result;
-                    console.log(this.form.photo);
-                };
-                reader.readAsDataURL(file);
-            }
-        },
-        enregistreremployee() {
-            axios
-                .post("/api/employee", this.form)
-                .then(() => {
-                    this.$router.push({ name: "liste-employee" });
-                    Notification.Succes();
-                })
-                .catch((error) => (this.errors = error.response.data.errors));
-        },
+      }
     },
 };
 </script>
