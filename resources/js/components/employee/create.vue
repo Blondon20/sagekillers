@@ -26,7 +26,7 @@
 
         <div class="card card-default">
             <div class="card-header">
-                <h4 class="card-title">Nouveau employee :</h4>
+                <h4 class="card-title">Nouveau employee : <strong>{{ form.nom_complet }}</strong></h4>
 
                 <div class="card-tools">
                     <button

@@ -170,6 +170,58 @@
               </li>
             </ul>
           </li>
+
+          <li class="nav-header">Article / Conditionnement</li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Gestion articles
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <router-link to="/liste-employee" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Liste articles</p>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/liste-famille" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Liste famille</p>
+                </router-link>
+              </li>
+              
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Gestion conditionnem°t
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <router-link to="/equipement" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Liste équipements</p>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/fonction" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Maintenance périodique</p>
+                </router-link>
+              </li>
+            </ul>
+          </li>
+
+
           <li class="nav-header">Ressource humaine / Machine</li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">

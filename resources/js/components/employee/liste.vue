@@ -93,7 +93,8 @@
                 </div>
             </div>
             <!-- /.card-body -->
-            <div class="card-footer">Les boutons</div>
+            <div class="card-footer">   
+            </div>
         </div>
     </div>
 </template>
