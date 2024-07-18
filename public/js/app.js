@@ -5459,6 +5459,45 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     // Initialiser DataTables
     $(this.$refs.tables).DataTable(DataTablesConfig);
+  },
+  created: function created() {
+    if (!User.loggedIn()) {
+      this.$router.push({
+        name: "/"
+      });
+    }
+  },
+  data: function data() {
+    return {
+      form: {
+        code_categorie: "",
+        intitule_categorie: ""
+      },
+      errors: {}
+    };
+  },
+  methods: {
+    ajouterFamille: function ajouterFamille() {
+      var _this = this;
+      axios.post("/api/famille", this.form).then(function () {
+        // Réinitialiser le formulaire
+        _this.form.code_categorie = "";
+        _this.form.intitule_categorie = "";
+
+        // Fermer le modal
+        $(_this.$refs.addFamilleModal).modal('hide');
+
+        // Afficher la notification de succès
+        Notification.Succes();
+
+        // Rediriger vers la liste
+        _this.$router.push({
+          name: "liste-famille"
+        });
+      })["catch"](function (error) {
+        _this.errors = error.response.data.errors;
+      });
+    }
   }
 });
 
@@ -7041,7 +7080,77 @@ var render = function render() {
     }
   }, [_vm._v("Supprimer")])], 1)])])])])]), _vm._v(" "), _c("div", {
     staticClass: "card-footer"
-  })]), _vm._v(" "), _vm._m(4)]);
+  })]), _vm._v(" "), _c("div", {
+    ref: "addFamilleModal",
+    staticClass: "modal fade",
+    attrs: {
+      id: "addFamille"
+    }
+  }, [_c("div", {
+    staticClass: "modal-dialog"
+  }, [_c("div", {
+    staticClass: "modal-content"
+  }, [_vm._m(4), _vm._v(" "), _c("form", {
+    staticClass: "famille",
+    on: {
+      submit: function submit($event) {
+        $event.preventDefault();
+        return _vm.ajouterFamille.apply(null, arguments);
+      }
+    }
+  }, [_c("div", {
+    staticClass: "modal-body"
+  }, [_c("div", {
+    staticClass: "box-body"
+  }, [_c("div", {
+    staticClass: "form-group"
+  }, [_c("label", [_vm._v("Code famille :")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.code_categorie,
+      expression: "form.code_categorie"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.form.code_categorie
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.form, "code_categorie", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _vm.errors.code_categorie ? _c("small", {
+    staticClass: "text-danger"
+  }, [_vm._v(_vm._s(_vm.errors.code_categorie))]) : _vm._e()]), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("label", [_vm._v("Intitué famille :")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.intitule_categorie,
+      expression: "form.intitule_categorie"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text"
+    },
+    domProps: {
+      value: _vm.form.intitule_categorie
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.form, "intitule_categorie", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _vm.errors.intitule_categorie ? _c("small", {
+    staticClass: "text-danger"
+  }, [_vm._v(_vm._s(_vm.errors.intitule_categorie[0]))]) : _vm._e()])])]), _vm._v(" "), _vm._m(5)])])])])]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -7083,15 +7192,6 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "modal fade",
-    attrs: {
-      id: "addFamille"
-    }
-  }, [_c("div", {
-    staticClass: "modal-dialog"
-  }, [_c("div", {
-    staticClass: "modal-content"
-  }, [_c("div", {
     staticClass: "modal-header"
   }, [_c("h4", {
     staticClass: "modal-title"
@@ -7101,50 +7201,24 @@ var staticRenderFns = [function () {
       type: "button",
       "data-dismiss": "modal"
     }
-  }, [_vm._v("\n                        ×\n                    ")])]), _vm._v(" "), _c("div", {
-    staticClass: "modal-body"
-  }, [_c("div", {
-    staticClass: "box-body"
-  }, [_c("div", {
-    staticClass: "form-group"
-  }, [_c("label", [_vm._v("Code famille :")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "text"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("label", [_vm._v("Intitué famille :")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
-    attrs: {
-      type: "text"
-    }
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
-  }, [_c("select", {
-    staticClass: "form-control"
-  }, [_c("option", {
-    attrs: {
-      value: ""
-    }
-  }, [_vm._v("Catégorie 1")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: ""
-    }
-  }, [_vm._v("Catégorie 2")])])])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                        ×\n                    ")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
     staticClass: "modal-footer text-right"
   }, [_c("button", {
     staticClass: "btn btn-primary",
     attrs: {
-      type: "button",
-      "data-dismiss": "modal"
+      type: "submit"
     }
-  }, [_vm._v("\n                        Valider\n                    ")]), _vm._v(" "), _c("button", {
+  }, [_vm._v("\n                            Valider\n                        ")]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-danger",
     attrs: {
-      type: "reset"
+      type: "reset",
+      "data-dismiss": "modal"
     }
-  }, [_vm._v("\n                        Annuler\n                    ")])])])])]);
+  }, [_vm._v("\n                            Annuler\n                        ")])]);
 }];
 render._withStripped = true;
 

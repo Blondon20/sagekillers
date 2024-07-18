@@ -81,7 +81,7 @@
         </div>
 
         <!-- Fenêtre modal pour ajouter la famille -->
-        <div class="modal fade" id="addFamille">
+        <div class="modal fade" id="addFamille" ref="addFamilleModal">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <!-- Modal Header -->
@@ -96,40 +96,55 @@
                         </button>
                     </div>
 
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <div class="box-body">
-                            <div class="form-group">
-                                <label>Code famille :</label>
-                                <input type="text" class="form-control" />
-                            </div>
-                            <div class="form-group">
-                                <label>Intitué famille :</label>
-                                <input type="text" class="form-control" />
-                            </div>
-                            <div class="form-group">
-                                <select class="form-control">
-                                    <option value="">Catégorie 1</option>
-                                    <option value="">Catégorie 2</option>
-                                </select>
+                    <form class="famille" @submit.prevent="ajouterFamille">
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label>Code famille :</label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        v-model="form.code_categorie"
+                                    />
+                                    <small
+                                        class="text-danger"
+                                        v-if="errors.code_categorie"
+                                        >{{ errors.code_categorie }}</small
+                                    >
+                                </div>
+                                <div class="form-group">
+                                    <label>Intitué famille :</label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        v-model="form.intitule_categorie"
+                                    />
+                                    <small
+                                        class="text-danger"
+                                        v-if="errors.intitule_categorie"
+                                        >{{
+                                            errors.intitule_categorie[0]
+                                        }}</small
+                                    >
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Modal footer -->
-                    <div class="modal-footer text-right">
-                        <button
-                            type="button"
-                            class="btn btn-primary"
-                            data-dismiss="modal"
-                        >
-                            Valider
-                        </button>
+                        <!-- Modal footer -->
+                        <div class="modal-footer text-right">
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                            >
+                                Valider
+                            </button>
 
-                        <button type="reset" class="btn btn-danger">
-                            Annuler
-                        </button>
-                    </div>
+                            <button type="reset" class="btn btn-danger" data-dismiss="modal">
+                                Annuler
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -141,6 +156,46 @@ export default {
     mounted() {
         // Initialiser DataTables
         $(this.$refs.tables).DataTable(DataTablesConfig);
+    },
+
+    created() {
+        if (!User.loggedIn()) {
+            this.$router.push({ name: "/" });
+        }
+    },
+
+    data() {
+        return {
+            form: {
+                code_categorie: "",
+                intitule_categorie: "",
+            },
+
+            errors: {},
+        };
+    },
+    methods: {
+        ajouterFamille() {
+            axios
+                .post("/api/famille", this.form)
+                .then(() => {
+                    // Réinitialiser le formulaire
+                    this.form.code_categorie = "";
+                    this.form.intitule_categorie = "";
+                    
+                    // Fermer le modal
+                    $(this.$refs.addFamilleModal).modal('hide');
+
+                    // Afficher la notification de succès
+                    Notification.Succes();
+                    
+                    // Rediriger vers la liste
+                    this.$router.push({ name: "liste-famille" });
+                })
+                .catch((error) => {
+                    this.errors = error.response.data.errors;
+                });
+        },
     },
 };
 </script>

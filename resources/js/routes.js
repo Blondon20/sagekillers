@@ -22,6 +22,7 @@ export const routes = [
 
     { path: "/home", component: home, name: "home" },
 
+
     // Route employee
     {
         path: "/creer-employee",
@@ -39,6 +40,7 @@ export const routes = [
         name: "edit-employee",
     },
 
+    
     // Route famille
     { path: "/liste-famille", component: listefamille, name: "liste-famille" },
 ];
